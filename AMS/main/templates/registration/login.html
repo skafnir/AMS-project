@@ -4,16 +4,20 @@
 {% block title %} Log in {% endblock title %}
 
 {% block content %}
-<div id="formContent">
-    <form method="post">
-        <table>
-            {{ form }}
-            {% csrf_token %}
-        </table>
-        <button type="submit">Log in!</button>
-    </form>
-    <div id="formFooter">
-      <a class="underlineHover" href="{% url 'password_reset' %}">Forgot Password?</a>
+<div class="container">
+    <div id="formContent">
+        <form method="post">
+            <table>
+
+                {{ form }}
+                {% csrf_token %}
+
+            </table>
+            <button type="submit">Log in</button>
+        </form>
+        <div id="formFooter">
+          <a class="underlineHover" href="{% url 'password_reset' %}">Forgot Password?</a>
+        </div>
     </div>
 </div>
 

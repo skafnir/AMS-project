@@ -36,7 +36,7 @@
                     <a class="nav-link color-header" href="{% url 'login' %}"> Log in </a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link color-header" href="#"> Create account </a>
+                    <a class="nav-link color-header" href="{% url 'signup' %}"> Create account </a>
                 </li>
                 {% endif %}
 
@@ -56,10 +56,6 @@
 <!-- //--------------------------- page content -------------------------// -->
 {% block content %}{% endblock content %}
 <!-- //--------------------------- page content end ---------------------// -->
-
-            </div>
-        </div>
-    </section>
 
     <section class="last-info-section padding-small" id="contact">
         <div class="container">

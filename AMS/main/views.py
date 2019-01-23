@@ -5,8 +5,6 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views import View
 
-from main.forms import LoginForm
-
 
 class MainPageView(View):
 

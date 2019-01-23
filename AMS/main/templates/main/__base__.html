@@ -24,12 +24,22 @@
                 Plan Your <span> Appointment </span>
             </a>
             <ul class="nav nounderline text-uppercase">
+
+                {% if user.is_authenticated %}
+                <li class="nav-item ml-4">
+                    <a class="nav-link color-header" href="#"> Hi {{ user.username }}! </a>
+                <li class="nav-item ml-4">
+                    <a class="nav-link color-header" href="{% url 'logout' %}"> Logout </a>
+                </li>
+                {% else %}
                 <li class="nav-item ml-4">
                     <a class="nav-link color-header" href="{% url 'login' %}"> Log in </a>
                 </li>
                 <li class="nav-item ml-4">
                     <a class="nav-link color-header" href="#"> Create account </a>
                 </li>
+                {% endif %}
+
                 <li class="nav-item ml-4">
                     <a class="nav-link" href="#"> Services </a>
                 </li>
@@ -42,42 +52,6 @@
             </ul>
         </nav>
     </header>
-    {% comment %}
-    <!--<header class="page-header">-->
-        <!--<nav class="navbar navbar-expand-lg justify-content-around">-->
-            <!--<a href="{% url 'main_page' %}" class="navbar-brand main-logo">-->
-                <!--Plan Your <span> Appointment </span>-->
-            <!--</a>-->
-            <!--<ul class="nav nounderline text-uppercase">-->
-                <!---->
-                <!--{% if user.is_authenticated %}-->
-                    <!--Hi {{ user.username }}!-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link color-header" href="{% url 'logout' %}"> Log in </a>-->
-                <!--</li>-->
-                <!--{% else %}-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link color-header" href="{% url 'login' %}"> Log in </a>-->
-                <!--</li>-->
-                <!--{% endif %}-->
-                <!---->
-                <!--</li>-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link color-header" href="#"> Create account </a>-->
-                <!--</li>-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link" href="#"> Services </a>-->
-                <!--</li>-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link" href="{% url 'about' %}"> About us </a>-->
-                <!--</li>-->
-                <!--<li class="nav-item ml-4">-->
-                    <!--<a class="nav-link" href="{% url 'contact' %}"> Contact </a>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</nav>-->
-    <!--</header>-->
-    {% endcomment %}
 
 <!-- //--------------------------- page content -------------------------// -->
 {% block content %}{% endblock content %}

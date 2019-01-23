@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}{% endblock title %} | Zaplanuj Wizytę </title>
+    <title>{% block title %}{% endblock title %} | Plan Your Appointment </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -25,25 +25,59 @@
             </a>
             <ul class="nav nounderline text-uppercase">
                 <li class="nav-item ml-4">
-                    <a class="nav-link color-header" href="login.html"> Log in </a>
+                    <a class="nav-link color-header" href="{% url 'login' %}"> Log in </a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link color-header" href="registration.html"> Create account </a>
+                    <a class="nav-link color-header" href="#"> Create account </a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link disabled" href="#"> Services </a>
+                    <a class="nav-link" href="#"> Services </a>
                 </li>
                 <li class="nav-item ml-4">
                     <a class="nav-link" href="{% url 'about' %}"> About us </a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link disabled" href="{% url 'contact' %}"> Contact </a>
+                    <a class="nav-link" href="{% url 'contact' %}"> Contact </a>
                 </li>
             </ul>
         </nav>
     </header>
-
-
+    {% comment %}
+    <!--<header class="page-header">-->
+        <!--<nav class="navbar navbar-expand-lg justify-content-around">-->
+            <!--<a href="{% url 'main_page' %}" class="navbar-brand main-logo">-->
+                <!--Plan Your <span> Appointment </span>-->
+            <!--</a>-->
+            <!--<ul class="nav nounderline text-uppercase">-->
+                <!---->
+                <!--{% if user.is_authenticated %}-->
+                    <!--Hi {{ user.username }}!-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link color-header" href="{% url 'logout' %}"> Log in </a>-->
+                <!--</li>-->
+                <!--{% else %}-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link color-header" href="{% url 'login' %}"> Log in </a>-->
+                <!--</li>-->
+                <!--{% endif %}-->
+                <!---->
+                <!--</li>-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link color-header" href="#"> Create account </a>-->
+                <!--</li>-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link" href="#"> Services </a>-->
+                <!--</li>-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link" href="{% url 'about' %}"> About us </a>-->
+                <!--</li>-->
+                <!--<li class="nav-item ml-4">-->
+                    <!--<a class="nav-link" href="{% url 'contact' %}"> Contact </a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+    <!--</header>-->
+    {% endcomment %}
 
 <!-- //--------------------------- page content -------------------------// -->
 {% block content %}{% endblock content %}

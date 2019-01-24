@@ -18,3 +18,6 @@ class AppointmentRequest(models.Model):
     date = models.DateTimeField(verbose_name="Best date for me")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Created")
 
+    def __str__(self):
+        return f'User: {self.user}, status: {self.status}, services: {self.services}, duration: {self.duration_total}'
+

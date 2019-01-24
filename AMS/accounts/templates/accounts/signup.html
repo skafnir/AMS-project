@@ -10,11 +10,12 @@
   <form method="post">
       <table>
 
-          {{ form.as_p }}
+          {{ form }}
           {% csrf_token %}
 
       </table>
     <button type="submit">Sign up</button>
   </form>
 </div>
+
 {% endblock content %}

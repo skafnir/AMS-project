@@ -1,0 +1,44 @@
+{% extends "main/__base__.html" %}
+
+{% block title %} Services {% endblock title %}
+
+{% block content %}
+
+<section>
+        <div class="row padding-small">
+            <i class="fas fa-users icon-users"></i>
+            <h1>Our services:</h1>
+            <hr>
+            <div class="orange-line w-100"></div>
+        </div>
+    </section>
+
+    <section class="mr-4 ml-4">
+    <table class="table">
+            <thead>
+              <tr class="d-flex text-color-darker">
+                <th scope="col" class="col-2">NAME</th>
+                <th scope="col" class="col-5">DESCRIPTION</th>
+                  <th scope="col" class="col-2">DURATION</th>
+                  <th scope="col" class="col-2">PRICE</th>
+                <th scope="col" class="col-1">ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="text-color-lighter">
+            {% for item in services %}
+              <tr class="d-flex">
+                <td class="col-2">
+                    {{ item.name }}
+                </td>
+                <td class="col-5"> {{ item.description}} </td>
+                  <th scope="row" class="col-2">{{ item.duration }}</th>
+                  <th scope="row" class="col-2">{{ item.price }} PLN</th>
+                <td class="col-1"><a href="{% url 'services-details' item.id %}" class="btn btn-info rounded-0 text-light">
+                    Check it out!</a></button></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock content %}

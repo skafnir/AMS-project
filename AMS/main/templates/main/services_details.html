@@ -1,0 +1,73 @@
+ {% extends "main/__base__.html" %}
+
+{% block title %} Service details {% endblock title %}
+
+{% block content %}
+
+
+    <section class="mr-4 ml-4">
+        <div class="row pt-4 pb-2">
+            <i class="fas fa-users icon-users"></i>
+            <h1>Service:</h1>
+            <hr>
+            <div class="orange-line w-100"></div>
+        </div>
+    </section>
+
+    <section class="width-medium text-color-darker">
+        <div class="pb-2">
+            <div class="border-dashed view-height w-100">
+                <div class="mt-4 ml-4 mr-4">
+                    <div class="row border-bottom border-3">
+                        <div class="col"><h3 class="color-header text-uppercase"> SERVICE DETAILS </h3></div>
+                        <div class="col d-flex justify-content-end mb-2">
+                            <a href="{% url 'services' %}" class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
+                                Back</a></div>
+                    </div>
+
+                    <table class="table borderless">
+                        <tbody>
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2"> Name </th>
+                                <td class="col-7">
+                                    {{ service.name }}
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2">Type</th>
+                                <td class="col-7"> {{ service.type_of }} </tr>
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2"> Duration </th>
+                                <td class="col-7">
+                                    {{ service.duration }}
+                                </td>
+                            </tr>
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2">Price</th>
+                                <td class="col-7">
+                                    {{ service.price }} PLN
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row d-flex">
+                        <div class="col-6 border-bottom border-3"><h3 class="text-uppercase"> DESCRIPTION </h3></div>
+                        <div class="col-2"></div>
+                        <div class="col-4 border-bottom border-3"><h3 class="text-uppercase"> PHOTO </h3></div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="col-6 p-4">
+                            <p> {{ service.description }} </p>
+                        </div>
+                        <div class="col-3"></div>
+                        <ul class="col-3 p-4 list-unstyled">
+                        <li><div class="div-img"></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

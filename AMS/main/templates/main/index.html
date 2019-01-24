@@ -8,7 +8,7 @@
         <div id="carouselExampleControls" class="carousel slide main-slider" data-ride="carousel">
             <div class="carousel-inner container">
                 <div class=“carousel-inner”>
-                {% for item in recipes_list %}
+                {% for item in service_list %}
                    {% if forloop.first %}
                        <div class="carousel-item active">
                    {% else %}
@@ -17,7 +17,7 @@
                             <div class="container w-50 d-50">
                                     <div class="carousel-caption d-block">
                                         <h1> {{ item.name }} </h1>
-                                        <h3> {{ item.description }} </h3>
+                                        <h3> {{ item.type_of }} </h3>
                                     </div>
                             </div>
                         </div>

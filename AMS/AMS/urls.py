@@ -17,16 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from main.views import MainPageView, AboutView, ContactView, Dashboard
+from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPageView.as_view(), name='main_page'),
+    path('services/', ServicesView.as_view(), name='services'),
+    re_path(r'^services/details/(?P<id>(\d)+)/$', ServicesDetailsView.as_view(), name='services-details'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('dashboard/', Dashboard.as_view(), name='dashboard'),
+
 
 
 ]

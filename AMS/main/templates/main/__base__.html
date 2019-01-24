@@ -29,6 +29,9 @@
                 <li class="nav-item ml-4">
                     <a class="nav-link color-header" href="#"> Hi {{ user.username }}! </a>
                 <li class="nav-item ml-4">
+                    <a class="nav-link color-header" href="{% url 'dashboard' %}"> Dashboard </a>
+                </li>
+                <li class="nav-item ml-4">
                     <a class="nav-link color-header" href="{% url 'logout' %}"> Logout </a>
                 </li>
                 {% else %}
@@ -41,7 +44,7 @@
                 {% endif %}
 
                 <li class="nav-item ml-4">
-                    <a class="nav-link" href="#"> Services </a>
+                    <a class="nav-link" href="{% url 'services' %}"> Services </a>
                 </li>
                 <li class="nav-item ml-4">
                     <a class="nav-link" href="{% url 'about' %}"> About us </a>

@@ -26,6 +26,6 @@ DURATION_TIME_CHOICES = (
 class Service(models.Model):
     name = models.CharField(max_length=255, verbose_name="Name")
     type_of = models.CharField(max_length=255, verbose_name="Type")
-    duration = models.DurationField(choices=DURATION_TIME_CHOICES, blank=True, verbose_name="Duration")
-    price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="Price")
+    duration = models.DurationField(choices=DURATION_TIME_CHOICES, verbose_name="Duration")
+    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name="Price")
 

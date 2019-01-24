@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from main.views import MainPageView, AboutView, ContactView
+from main.views import MainPageView, AboutView, ContactView, Dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('dashboard/', Dashboard.as_view(), name='dashboard'),
 
 
 ]

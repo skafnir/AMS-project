@@ -31,6 +31,6 @@ class Service(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.name}, time: {self.duration}, price: {self.price}'
+        return f'{self.name}, {self.type_of}'
 
 

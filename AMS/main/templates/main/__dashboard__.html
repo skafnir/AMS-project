@@ -42,13 +42,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'my-appointments' %}">
                         <span>My Appointments</span>
                         <i class="fas fa-angle-right"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'appointment-request' %}">
                         <span>New Appointment</span>
                         <i class="fas fa-angle-right"></i>
                     </a>
@@ -66,19 +66,17 @@
                     </a>
                 </li>
             </ul>
-        </div>
-    </section>
 
-<!--<div class="dashboard-content border-dashed p-3 m-4 view-height">-->
-    <!--<div class="mt-4 ml-4 mr-4">-->
+
+
 
 <!-- //--------------------------- page content -------------------------// -->
 {% block content %}{% endblock content %}
 <!-- //--------------------------- page content end ---------------------// -->
 
-    <!--</div>-->
-<!--</div>-->
 
+        </div>
+    </section>
 
 <section class="last-info-section padding-small" id="contact">
         <div class="container">

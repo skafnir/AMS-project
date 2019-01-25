@@ -1,0 +1,52 @@
+{% extends "main/__base__.html" %}
+
+{% block title %} My Appointments {% endblock title %}
+
+{% block content %}
+
+<section>
+        <div class="row padding-small">
+            <i class="fas fa-users icon-users"></i>
+            <h1>Our services:</h1>
+            <hr>
+            <div class="orange-line w-100"></div>
+        </div>
+    </section>
+
+    <section class="mr-4 ml-4">
+    <table class="table">
+            <thead>
+              <tr class="d-flex text-color-darker">
+                <th scope="col" class="col-1">STATUS</th>
+                <th scope="col" class="col-3">DATE</th>
+                  <th scope="col" class="col-3">SERVICES</th>
+                  <th scope="col" class="col-2">DURATION</th>
+                  <th scope="col" class="col-2">PRICE</th>
+                <th scope="col" class="col-1">ACTION</th>
+              </tr>
+            </thead>
+            <tbody class="text-color-lighter">
+            {% for appointment in appointments %}
+              <tr class="d-flex">
+                <td class="col-1">
+                    {{ appointment.get_status_display }}
+                </td>
+                <td class="col-3">
+                    {{ appointment.date_from }}
+                </td>
+                <td class="col-3">
+                    {% for service in appointment.services.all %}
+                        {{ service }}<br>
+                    {% endfor %}
+                </td>
+                  <th scope="row" class="col-2">{{ appointment.duration_total }}</th>
+                  <th scope="row" class="col-2">{{ appointment.price_total }} PLN</th>
+                <td class="col-1"><a href="#" class="btn btn-info rounded-0 text-light">
+                    More info</a></button></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock content %}

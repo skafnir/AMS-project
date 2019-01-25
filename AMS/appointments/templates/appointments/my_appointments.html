@@ -29,7 +29,7 @@
             {% for appointment in appointments %}
               <tr class="d-flex">
                 <td class="col-1">
-                    {{ appointment.get_status_display }}
+                    <b> {{ appointment.get_status_display }} </b>
                 </td>
                 <td class="col-3">
                     {{ appointment.date_from }}
@@ -41,8 +41,8 @@
                 </td>
                   <th scope="row" class="col-2">{{ appointment.duration_total }}</th>
                   <th scope="row" class="col-2">{{ appointment.price_total }} PLN</th>
-                <td class="col-1"><a href="#" class="btn btn-info rounded-0 text-light">
-                    More info</a></button></td>
+                <td class="col-1"><a href="{% url 'appointment-delete' appointment.pk %}" class="btn btn-danger rounded-0 text-light">
+                    Delete</a></button></td>
               </tr>
             {% endfor %}
             </tbody>

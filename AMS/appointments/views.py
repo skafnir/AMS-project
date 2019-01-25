@@ -1,12 +1,14 @@
 import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.views import View
 
 from django.urls import reverse_lazy
 from dateutil import parser
+from django.views.generic import DeleteView
+
 from appointments.forms import AppointmentRequestForm
 from appointments.models import AppointmentRequest
 from main.models import Service
@@ -52,5 +54,30 @@ class AppointmentsView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         appointments = AppointmentRequest.objects.filter(user=user).order_by('-date_from')
-        return render(request, "appointments/my_appointments.html", {'appointments': appointments})
+        return render(request, 'appointments/my_appointments.html', {'appointments': appointments})
+
+
+class AppointmentsDetailsView(LoginRequiredMixin, View):
+
+    def get(self, request, **kwargs):
+        if request.method == 'GET':
+            try:
+                idik = request.GET['id']
+                appointment = AppointmentRequest.objects.get(id=idik)
+                return render(request, 'appointments/appointments_details.html', {'appointment': appointment})
+            except KeyError:
+                try:
+                    idik = int(kwargs['id'])
+                    appointment = AppointmentRequest.objects.get(id=idik)
+                    return render(request, 'appointments/appointments_details.html', {'appointment': appointment})
+                except KeyError:
+                    raise('Error occured!')
+        else:
+            raise Http404
+
+
+class AppointmentRequestDelete(DeleteView):
+    model = AppointmentRequest
+    success_url = reverse_lazy('my-appointments')
+    template_name_suffix = '_confirm_delete'
 

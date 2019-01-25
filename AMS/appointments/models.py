@@ -4,9 +4,9 @@ from django.db import models
 from main.models import Service
 
 APPOINTMENT_STATUS =(
-    (1, "waiting"),
-    (2, "verified"),
-    (3, "rejected"),
+    (1, "WAITING"),
+    (2, "VERIFIED"),
+    (3, "REJECTED"),
 )
 
 

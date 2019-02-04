@@ -7,4 +7,4 @@ TODO: a lot ;)
 Project still in work.
 
 Technology:
-Python 3.7, Django 2.1.5, PostgreSQL, HTML 5, CSS, Boootstrap, JS, jQuery
+Python 3.7, Django 2.1.5, PostgreSQL, HTML 5, CSS, Boootstrap, JS, jQuery, IDE: PyCharm

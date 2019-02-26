@@ -1,4 +1,27 @@
-<<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
-</form>
+
+{% extends "main/__dashboard__.html" %}
+
+{% block title %} Change password {% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="dashboard-content border-dashed p-3 m-4 view-height">
+        <div class="row border-bottom border-3 p-1 m-1">
+            <div class="col noPadding">
+                <h3 class="color-header text-uppercase">DELETE CONFIRMATION</h3>
+            </div>
+        </div>
+        <section>
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete "{{ object }}"?</p>
+                <div class="form-group form-group--buttons">
+                    <button class="btn" type="submit">Confirm</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}

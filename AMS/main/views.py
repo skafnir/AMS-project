@@ -1,8 +1,11 @@
 import random
+
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.http import Http404
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from main.models import Service
@@ -49,15 +52,35 @@ class ServicesDetailsView(View):
         if request.method == 'GET':
             try:
                 idik = request.GET['id']
-                service = Service.objects.get(id=idik)
+                service = get_object_or_404(Service, id=idik)
                 return render(request, "main/services_details.html", {'service': service})
             except KeyError:
                 try:
                     idik = int(kwargs['id'])
-                    service = Service.objects.get(id=idik)
+                    service = get_object_or_404(Service, id=idik)
                     return render(request, "main/services_details.html", {'service': service})
                 except KeyError:
                     raise('Error occured!')
         else:
             raise Http404
+
+
+class ChangePasswordView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        return render(request, 'main/password_change.html')
+
+    def post(self, request):
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('password2')
+        u = User.objects.get(username=request.user)
+
+        if password and confirmPassword and password == confirmPassword:
+            u.set_password(password)
+            update_session_auth_hash(request, u)  # doesnt log out after change
+            u.save()
+            text = 'Password changed'
+            return render(request, 'main/password_change.html', {"text": text})
+        text = 'Incorrect password'
+        return render(request, 'main/password_change.html', {"text": text})
 

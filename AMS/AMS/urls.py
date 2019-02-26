@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView
+from appointments.views import AppointmentRequestView, AppointmentsView, \
+    AppointmentRequestDelete
+from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView, \
+    ChangePasswordView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +32,9 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('dashboard/', Dashboard.as_view(), name='dashboard'),
-
-
+    path('appointmentrequest/', AppointmentRequestView.as_view(), name='appointment-request'),
+    path('myappointments/', AppointmentsView.as_view(), name='my-appointments'),
+    re_path((r'^myappointments/delete/(?P<pk>\d+)/$'), AppointmentRequestDelete.as_view(), name='appointment-delete'),
+    path('changepassword/', ChangePasswordView.as_view(), name='change-password'),
 
 ]

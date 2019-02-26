@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import Http404
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from main.models import Service
@@ -52,12 +52,12 @@ class ServicesDetailsView(View):
         if request.method == 'GET':
             try:
                 idik = request.GET['id']
-                service = Service.objects.get(id=idik)
+                service = get_object_or_404(Service, id=idik)
                 return render(request, "main/services_details.html", {'service': service})
             except KeyError:
                 try:
                     idik = int(kwargs['id'])
-                    service = Service.objects.get(id=idik)
+                    service = get_object_or_404(Service, id=idik)
                     return render(request, "main/services_details.html", {'service': service})
                 except KeyError:
                     raise('Error occured!')

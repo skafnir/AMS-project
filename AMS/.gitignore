@@ -221,3 +221,4 @@ local_settings.py
 
 *.iml
 *.xml
+*.idea

@@ -1,0 +1,29 @@
+ {% extends "accounts/__dashboard__.html" %}
+
+{% block title %} My profile {% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="dashboard-content border-dashed p-3 m-4 view-height">
+        <div class="row border-bottom border-3 p-1 m-1">
+            <div class="col noPadding">
+                <h3 class="color-header text-uppercase">Edit profile</h3>
+            </div>
+        </div>
+        <section>
+
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <h2>{{text}}</h2>
+            </div>
+              {{ form.as_table }}
+            <div class="form-group form-group--buttons">
+              <button class="btn" type="submit">Edit</button>
+            </div>
+          </form>
+
+        </section>
+    </div>
+</div>
+{% endblock content %}

@@ -1,8 +1,8 @@
 import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, Http404
-from django.shortcuts import render, redirect
+from django.http import Http404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from django.urls import reverse_lazy
@@ -63,15 +63,12 @@ class AppointmentsDetailsView(LoginRequiredMixin, View):
         if request.method == 'GET':
             try:
                 idik = request.GET['id']
-                appointment = AppointmentRequest.objects.get(id=idik)
+                appointment = get_object_or_404(AppointmentRequest, id=idik)
                 return render(request, 'appointments/appointments_details.html', {'appointment': appointment})
             except KeyError:
-                try:
                     idik = int(kwargs['id'])
-                    appointment = AppointmentRequest.objects.get(id=idik)
+                    appointment = get_object_or_404(AppointmentRequest, id=idik)
                     return render(request, 'appointments/appointments_details.html', {'appointment': appointment})
-                except KeyError:
-                    raise('Error occured!')
         else:
             raise Http404
 

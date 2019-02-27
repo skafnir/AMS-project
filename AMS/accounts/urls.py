@@ -1,6 +1,6 @@
 from django.urls import path
 
-from main.views import ChangePasswordView
+from accounts.views import ChangePasswordView
 from . import views
 
 

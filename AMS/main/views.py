@@ -1,7 +1,5 @@
 import random
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 from django.http import Http404
 
 from django.shortcuts import render, get_object_or_404
@@ -30,12 +28,6 @@ class ContactView(View):
 
     def get(self, request):
         return render(request, "main/contact.html")
-
-
-class Dashboard(LoginRequiredMixin, View):
-
-    def get(self, request):
-        return render(request, "main/__dashboard__.html")
 
 
 class ServicesView(View):

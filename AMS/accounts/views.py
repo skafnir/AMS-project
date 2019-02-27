@@ -13,10 +13,18 @@ class SignUp(generic.CreateView):
     template_name = 'accounts/signup.html'
 
 
+class Dashboard(LoginRequiredMixin, View):
+
+    def get(self, request):
+        user = User.objects.get(username=request.user)
+        return render(request, "accounts/profile_details.html", {'user': user})
+
+
+
 class ChangePasswordView(LoginRequiredMixin, View):
 
     def get(self, request):
-        return render(request, 'main/password_change.html')
+        return render(request, 'accounts/password_change.html')
 
     def post(self, request):
         password = request.POST.get('password')
@@ -28,6 +36,6 @@ class ChangePasswordView(LoginRequiredMixin, View):
             update_session_auth_hash(request, u)  # doesnt log out after change
             u.save()
             text = 'Password changed'
-            return render(request, 'main/password_change.html', {"text": text})
+            return render(request, 'accounts/password_change.html', {"text": text})
         text = 'Incorrect password'
-        return render(request, 'main/password_change.html', {"text": text})
+        return render(request, 'accounts/password_change.html', {"text": text})

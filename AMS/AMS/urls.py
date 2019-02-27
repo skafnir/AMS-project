@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, re_path, include
-from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView
+from main.views import MainPageView, AboutView, ContactView, ServicesView, ServicesDetailsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +28,6 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact'),
     path('services/', ServicesView.as_view(), name='services'),
     re_path(r'^services/details/(?P<id>(\d)+)/$', ServicesDetailsView.as_view(), name='services-details'),
-    path('dashboard/', Dashboard.as_view(), name='dashboard'),
 
 
 ]

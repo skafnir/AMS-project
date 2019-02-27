@@ -16,25 +16,19 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, re_path, include
-
-from appointments.views import AppointmentRequestView, AppointmentsView, \
-    AppointmentRequestDelete
-from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView, \
-    ChangePasswordView
+from main.views import MainPageView, AboutView, ContactView, Dashboard, ServicesView, ServicesDetailsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainPageView.as_view(), name='main_page'),
-    path('services/', ServicesView.as_view(), name='services'),
-    re_path(r'^services/details/(?P<id>(\d)+)/$', ServicesDetailsView.as_view(), name='services-details'),
-    path('about/', AboutView.as_view(), name='about'),
-    path('contact/', ContactView.as_view(), name='contact'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('appointment/', include('appointments.urls')),
+    path('', MainPageView.as_view(), name='main_page'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('services/', ServicesView.as_view(), name='services'),
+    re_path(r'^services/details/(?P<id>(\d)+)/$', ServicesDetailsView.as_view(), name='services-details'),
     path('dashboard/', Dashboard.as_view(), name='dashboard'),
-    path('appointmentrequest/', AppointmentRequestView.as_view(), name='appointment-request'),
-    path('myappointments/', AppointmentsView.as_view(), name='my-appointments'),
-    re_path((r'^myappointments/delete/(?P<pk>\d+)/$'), AppointmentRequestDelete.as_view(), name='appointment-delete'),
-    path('changepassword/', ChangePasswordView.as_view(), name='change-password'),
+
 
 ]

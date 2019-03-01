@@ -20,7 +20,8 @@ from main.views import MainPageView, AboutView, ContactView, ServicesView, Servi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^api/', include('api.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('appointment/', include('appointments.urls')),

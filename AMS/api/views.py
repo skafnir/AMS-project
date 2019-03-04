@@ -1,7 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from rest_framework import generics
 
 from api.serializers import ServiceSerializer
@@ -21,6 +17,5 @@ class ServiceRUDView(generics.RetrieveUpdateDestroyAPIView):
     # def get_object(self):
     #     pk = self.kwargs.get('pk')
     #     return Service.objects.get(pk=pk)
-
 
 

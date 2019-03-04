@@ -14,7 +14,7 @@ class ServiceSerializer(serializers.ModelSerializer):
             'price',
             'description',
 
-        ]
+            ]
 
     # converts to JSON
     # validation for data passed

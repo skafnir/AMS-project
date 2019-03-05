@@ -32,12 +32,14 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 
 class AppointmentRequestSerializer(serializers.ModelSerializer):
+
+    # add absolute url part 1
     url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = AppointmentRequest
         fields = [
-            'url'
+            'url',
             'pk',
             'status',
             'user',
@@ -53,8 +55,8 @@ class AppointmentRequestSerializer(serializers.ModelSerializer):
         # specify unchangeable data, pk is here default
         read_only_fields = ['user', 'created']
 
-        def get_url(self, obj):
-            return obj.get_api_url()
-
+    # add absolute url part 2
+    def get_url(self, obj):
+        return obj.get_api_url()
 
 

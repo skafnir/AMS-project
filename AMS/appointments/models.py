@@ -25,3 +25,7 @@ class AppointmentRequest(models.Model):
         return f'User: {self.user}, status: {self.status}, duration: {self.duration_total}, ' \
             f'date: {self.date_from}, created: {self.created}'
 
+    @property
+    def owner(self):
+        return self.user
+

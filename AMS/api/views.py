@@ -1,6 +1,7 @@
 from django.db.models import Q
 from rest_framework import generics, mixins
 
+from api.permissions import IsOwnerOrReadOnly
 from api.serializers import ServiceSerializer, AppointmentRequestSerializer
 from appointments.models import AppointmentRequest
 from main.models import Service
@@ -47,6 +48,7 @@ class AppointmentRequestRUDView(generics.RetrieveUpdateDestroyAPIView):
 
     lookup_field = 'pk'
     serializer_class = AppointmentRequestSerializer
+    permission_classes = [IsOwnerOrReadOnly]
     # queryset = AppointmentRequest.objects.all()
 
     def get_queryset(self):

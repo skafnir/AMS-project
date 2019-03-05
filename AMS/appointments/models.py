@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+from rest_framework.reverse import reverse as api_reverse
 
 from main.models import Service
 
@@ -28,4 +30,10 @@ class AppointmentRequest(models.Model):
     @property
     def owner(self):
         return self.user
+
+    # def get_absolute_url(self):
+    #     return reverse('api:api-appointment-rud', kwargs={'pk': self.pk})
+
+    def get_api_url(self):
+        return api_reverse('api:api-appointment-rud', kwargs={'pk': self.pk})
 

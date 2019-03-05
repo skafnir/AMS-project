@@ -2,6 +2,9 @@ from django.urls import re_path
 
 from api.views import ServiceRUDView, ServiceCreateView, AppointmentRequestCreateView, AppointmentRequestRUDView
 
+
+app_name = 'api'    # in tmpl eg. {% url api:api-service-rud' %}
+
 urlpatterns = [
     re_path(r'^service/(?P<pk>(\d)+)/$', ServiceRUDView.as_view(), name='api-service-rud'),
     re_path(r'^service/', ServiceCreateView.as_view(), name='api-service-create'),

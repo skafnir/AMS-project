@@ -37,4 +37,12 @@ class AppointmentRequestAPITestCase(APITestCase):
         user_count = User.objects.count()
         self.assertEqual(user_count, 1)
 
+    def test_single_service(self):
+        service_count = Service.objects.count()
+        self.assertEqual(service_count, 1)
+
+    def test_single_appointment_request(self):
+        appointment_request_count = AppointmentRequest.objects.count()
+        self.assertEqual(appointment_request_count, 1)
+
 

@@ -33,6 +33,7 @@ class ServiceCreateView(mixins.CreateModelMixin, generics.ListAPIView):
 
     lookup_field = 'pk'
     serializer_class = ServiceSerializer
+    # permission_classes = []           everything is permitted
     # queryset = Service.objects.all()
 
     def get_queryset(self):
